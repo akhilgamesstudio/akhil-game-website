@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akhil Games Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide-react@0.378.0"></script>
+    <style>
+        /* Custom styles for the auto slider and game sliders */
+        .auto-slider-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-height: 600px; /* Adjust height as needed */
+        }
+        .auto-slider {
+            display: flex;
+            transition: transform 0.8s ease-in-out; /* Smooth transition */
+        }
+        .auto-slider img {
+            width: 100%;
+            flex-shrink: 0; /* Prevent images from shrinking */
+            object-fit: cover; /* Cover the container while maintaining aspect ratio */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        /* Styles for the game specific sliders */
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slider img {
+            width: 100%;
+            flex-shrink: 0; /* Prevent images from shrinking */
+            object-fit: cover; /* Cover the container while maintaining aspect ratio */
+        }
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 9999px; /* Full rounded */
+        }
+        .prev-button {
+            left: 10px;
+        }
+        .next-button {
+            right: 10px;
+        }
+    </style>
+</head>
+<body class="font-sans bg-red-900 text-red-200 leading-normal tracking-wider">
+
+    <header class="bg-red-800 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-blue-500 rounded-full" viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                <span class="ml-3 text-xl">AKHIL GAMES STUDIO</span>
+            </a>
+            <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+                <a class="mr-5 hover:text-white cursor-pointer" href="#about">About</a>
+                <a class="mr-5 hover:text-white cursor-pointer" href="#games">Games</a>
+                <a class="mr-5 hover:text-white cursor-pointer" href="#contact">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="auto-slider-section" class="w-full">
+        <div class="auto-slider-container">
+            <div class="auto-slider" id="auto-image-slider">
+                </div>
+        </div>
+    </section>
+
+    <section id="about" class="text-white bg-red-900 body-font">
+        <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+            <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+                <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">About Akhil Games Studio Innovating Interactive Entertainment
+                    
+                </h1>
+                <p class="mb-8 leading-relaxed">Welcome to Akhil Games Studio, where creativity meets code to bring you unforgettable gaming experiences. Founded with a passion for pushing the boundaries of interactive entertainment, we are a team of dedicated developers, designers, and artists committed to crafting high-quality games for players of all ages. From thrilling action adventures to captivating puzzle games, our portfolio is built on innovation, quality, and fun. Join us on our journey to create the next generation of gaming.</p>
+                <div class="flex justify-center">
+                   
+                </div>
+            </div>
+            <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+                <img class="object-cover object-center rounded" alt="hero" src="https://i.ibb.co/9HZzkSj6/9.png/720x600/1f2937/d1d5db?text=Game+Development">
+            </div>
+        </div>
+    </section>
+
+    <section id="games" class="text-white-400 bg-white-800 body-font">
+        <div class="container px-5 py-24 mx-auto">
+            <div class="flex flex-col text-center w-full mb-20">
+                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Our Games</h1>
+                <p class="lg:w-2/3 mx-auto leading-relaxed text-white">Explore our exciting collection of games. Each game is crafted with passion and attention to detail to provide you with the best possible gaming experience.</p>
+            </div>
+            <div id="games-container" class="flex flex-wrap -m-4 justify-center">
+                </div>
+        </div>
+    </section>
+
+    <section id="contact" class="text-red-400 bg-red-900 body-font relative">
+        <div class="container px-5 py-24 mx-auto">
+            <div class="flex flex-col text-center w-full mb-12">
+                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Contact Us</h1>
+                <p class="lg:w-2/3 mx-auto leading-relaxed text-white">Have a question, suggestion, or just want to say hello? Get in touch with us!</p>
+            </div>
+            <div class="lg:w-1/2 md:w-2/3 mx-auto">
+                <div class="flex flex-wrap -m-2">
+                    <div class="p-2 w-1/2">
+                        <div class="relative">
+                            <label for="name" class="leading-7 text-sm text-white">Name</label>
+                            <input type="text" id="name" name="name" class="w-full bg-red-800 bg-opacity-40 rounded border border-red-700 focus:border-blue-500 focus:bg-red-900 focus:ring-2 focus:ring-blue-900 text-base outline-none text-red-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        </div>
+                    </div>
+                    <div class="p-2 w-1/2">
+                        <div class="relative">
+                            <label for="email" class="leading-7 text-sm text-white">Email</label>
+                            <input type="email" id="email" name="email" class="w-full bg-red-800 bg-opacity-40 rounded border border-red-700 focus:border-blue-500 focus:bg-red-900 focus:ring-2 focus:ring-blue-900 text-base outline-none text-red-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        </div>
+                    </div>
+                    <div class="p-2 w-full">
+                        <div class="relative">
+                            <label for="message" class="leading-7 text-sm text-white">Message</label>
+                            <textarea id="message" name="message" class="w-full bg-red-800 bg-opacity-40 rounded border border-red-700 focus:border-blue-500 focus:bg-red-900 focus:ring-2 focus:ring-blue-900 h-32 text-base outline-none text-red-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                        </div>
+                    </div>
+                    <div class="p-2 w-full">
+                        <button class="flex mx-auto text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg">Send Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-red-400 bg-red-800 body-font">
+        <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+            <a class="flex title-font font-medium items-center md:justify-start justify-center text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-blue-500 rounded-full" viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                <span class="ml-3 text-xl">Akhil Games Studio</span>
+            </a>
+            <p class="text-sm text-white sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-red-800 sm:py-2 sm:mt-0 mt-4">© 2025 Akhil Games Studio. —
+                <a href="https://twitter.com/knyttneve" class="text-white ml-1" target="_blank" rel="noopener noreferrer">@yourtwitter</a>
+            </p>
+            <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+                <a class="text-white">
+                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                    </svg>
+                </a>
+                <a class="ml-3 text-white">
+                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                    </svg>
+                </a>
+                <a class="ml-3 text-white">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                    </svg>
+                </a>
+                <a class="ml-3 text-white">
+                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                        <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                    </svg>
+                </a>
+            </span>
+        </div>
+    </footer>
+
+    <script>
+        // Game data in JSON format
+        const gamesData = [
+            {
+                "name": "Water Sort Magic",
+                "description": " Discover Magic Sort! Mix colors in a world where every splash of water is a step into mystery. This isn’t just a game; it’s a journey through puzzles that sparkle with charm, inviting you to sort, match, and puzzle your way through.",
+                "images": [
+                    "https://i.ibb.co/XZ2HrJF0/1.jpg/600x400/3b82f6/ffffff?text=Galactic+Explorer+1",
+                   
+                ]
+            },
+			{
+                "name": "Screw and Nuts",
+                "description": "Think you can untangle the mess? Dive into the Screw Puzzle: Wood Nut & Bolt game, where the world of puzzles meets the thrill of mechanics! Embark on a thrilling adventure where bolts, nuts, and wooden puzzles meet in a puzzle-filled challenge. Dive into a world filled with conundrums, where every turn reveals a new twist in the game..",
+                "images": [
+                    "https://i.ibb.co/pjL86Gvq/screw-and-nuts.png/600x400/3b82f6/ffffff?text=Galactic+Explorer+1",
+                    
+                ]
+            },
+			{
+                "name": "2d Adventure ",
+                "description": "Super Bobby's World - Jungle Adventure - Classic Run Game gives you the chance to step back in time to your childhood.Bobby World has been nothing but empties since the Princess got kidnapped into the jungle.",
+                "images": [
+                    "https://i.ibb.co/4wgPSkx0/Gemini-Generated-Image-4gj1xz4gj1xz4gj1.jpg/600x400/3b82f6/ffffff?text=Galactic+Explorer+1",
+                    
+                ]
+            },
+			{
+                "name": "Metal Wings",
+                "description": "Metal Wings: Elite Force is a 2d side-scroller shooter with classic features from the bests and new unique mechanics. Play as a soldier Contra from the Elite Force Metal Wings of another world with advanced technology, uses the iconic weapons and shoot down anything that harming the peace, from bio-tech soldiers to huges mechanic weapons, plus unique bosses all waiting for you in the battle zone.",
+                "images": [
+                    "https://i.ibb.co/99Y0s1DV/Metal-Wings-Elite-Force-sellanycode-screenshot-1621637073.jpg/600x400/3b82f6/ffffff?text=Galactic+Explorer+1",
+                    
+                ]
+            },
+            {
+                "name": "Long neck",
+                "description": "Whether you're big or small, at home or on the road, Long Neck Run is the perfect obstacle racing game to have fun and show your reflexes. Reach peaks in just a few minutes.",
+                "images": [
+                    "https://i.ibb.co/KcJj0YWH/long-neck-stack-unity.jpg/600x400/10b981/ffffff?text=Mystic+Woods+1",
+                    
+                ]
+            },
+            {
+                "name": "Car Jam Solver",
+                "description": "Welcome to Car Jam Solver - Traffic Jam, a brain teaser that will challenge your car sort skills! Ready to tackle a colorful world of car parking games.",
+                "images": [
+                    "https://i.ibb.co/PssC3GYF/Screenshot-2025-04-27-172451.png/600x400/f59e0b/ffffff?text=City+Builder+1",
+                 
+                ]
+            }
+        ];
+
+        // Images for the auto slider at the top
+        const autoSliderImages = [
+            "https://i.ibb.co/DHJNjNsr/7.png/1920x1080/1a202c/ffffff?text=Welcome+to+Akhil+Games+Studio",
+			
+            
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const gamesContainer = document.getElementById('games-container');
+            const autoImageSlider = document.getElementById('auto-image-slider');
+
+            // Populate the auto slider
+            autoSliderImages.forEach(image => {
+                const imgElement = document.createElement('img');
+                imgElement.src = image;
+                imgElement.alt = "Company Showcase";
+                autoImageSlider.appendChild(imgElement);
+            });
+
+            // Initialize auto slider
+            let autoSliderCurrentIndex = 0;
+            const autoSliderInterval = 5000; // Change image every 5 seconds
+
+            function moveAutoSlider() {
+                autoSliderCurrentIndex = (autoSliderCurrentIndex + 1) % autoSliderImages.length;
+                const translateValue = -autoSliderCurrentIndex * 100;
+                autoImageSlider.style.transform = `translateX(${translateValue}%)`;
+            }
+
+            setInterval(moveAutoSlider, autoSliderInterval);
+
+
+            // Populate the games section
+            gamesData.forEach((game, index) => {
+                const gameElement = document.createElement('div');
+                gameElement.classList.add('p-4', 'lg:w-1/3', 'md:w-1/2', 'w-full'); // Responsive grid classes
+
+                gameElement.innerHTML = `
+                    <div class="h-full border-2 border-red-700 border-opacity-75 rounded-lg overflow-hidden bg-red-700 bg-opacity-50">
+                        <div class="slider-container" id="slider-container-${index}">
+                            <div class="slider" id="slider-${index}">
+                                ${game.images.map(image => `<img src="${image}" alt="${game.name} Screenshot">`).join('')}
+                            </div>
+                            ${game.images.length > 1 ? `
+                                <button class="slider-button prev-button" onclick="moveSlider(${index}, -1)">&#10094;</button>
+                                <button class="slider-button next-button" onclick="moveSlider(${index}, 1)">&#10095;</button>
+                            ` : ''}
+                        </div>
+                        <div class="p-6">
+                            
+                            <h1 class="title-font text-lg font-medium text-white mb-3">${game.name}</h1>
+                            <p class="leading-relaxed mb-3">${game.description}</p>
+                            <div class="flex items-center flex-wrap ">
+                                <a class="text-blue-400 inline-flex items-center md:mb-2 lg:mb-0" href="#">Download
+                                    <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14"></path>
+                                        <path d="M12 5l7 7-7 7"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                gamesContainer.appendChild(gameElement);
+            });
+
+            // Initialize game slider positions
+            gamesData.forEach((_, index) => {
+                document.getElementById(`slider-${index}`).dataset.currentIndex = 0;
+            });
+        });
+
+        // Function to move individual game sliders
+        function moveSlider(gameIndex, direction) {
+            const slider = document.getElementById(`slider-${gameIndex}`);
+            const totalImages = gamesData[gameIndex].images.length;
+            let currentIndex = parseInt(slider.dataset.currentIndex);
+
+            currentIndex = (currentIndex + direction + totalImages) % totalImages;
+            slider.dataset.currentIndex = currentIndex;
+
+            const translateValue = -currentIndex * 100;
+            slider.style.transform = `translateX(${translateValue}%)`;
+        }
+    </script>
+
+</body>
+</html>
